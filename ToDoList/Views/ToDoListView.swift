@@ -8,12 +8,15 @@ import FirebaseFirestoreSwift
 import SwiftUI
 
 struct ToDoListView: View {
-    @StateObject var viewmodel = ToDoListViewViewModel()
+    //instead of create the vm as stored member
+    @StateObject var viewmodel : ToDoListViewViewModel
     @FirestoreQuery var items: [ToDoListItem]
     //we need it for firestore to observe entry for specific path
     
     init(userId: String){
         self._items = FirestoreQuery(collectionPath: "users/\(userId)/todos")
+        
+        self._viewmodel = StateObject(wrappedValue: ToDoListViewViewModel(userId: userId))
     }
     
     var body: some View {
@@ -26,8 +29,9 @@ struct ToDoListView: View {
                                 viewmodel.delete(id: item.id)
                             } label: {
                                 Text("Delete")
-                                    .foregroundColor(Color.red)
+                                    
                             }
+                            .tint(Color.red)
                         }
                 }
                 .listStyle(PlainListStyle())
