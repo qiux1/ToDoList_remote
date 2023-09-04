@@ -16,7 +16,10 @@ struct LoginView: View {
         NavigationView{
             VStack{
                 //Header
-                HeaderView()
+                HeaderView(title: "To Do List",
+                           subtitle: "Get Things Done",
+                           angle: 15,
+                           backgroundColor: Color.indigo)
                 
                 //Login Form
                 Form{
@@ -39,7 +42,9 @@ struct LoginView: View {
                                 .bold()
                         }
                     }
+                    .padding()
                 }
+                .offset(y: -50)
                 
                 
                 //Create New Account
@@ -54,6 +59,7 @@ struct LoginView: View {
             }
         }
         Spacer()
+        
     }
 }
 
