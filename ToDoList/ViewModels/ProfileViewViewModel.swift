@@ -9,4 +9,8 @@ import Foundation
 
 class ProfitViewViewModel:ObservableObject {
     init(){}
+    
+    func toggleIsDone(item: ToDoListItem){
+        
+    }
 }
