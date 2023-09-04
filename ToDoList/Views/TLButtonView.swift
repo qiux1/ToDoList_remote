@@ -16,6 +16,7 @@ struct TLButtonView: View {
         
         Button{
             //Action
+            action()
             
         }label:{
             ZStack{
